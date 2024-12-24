@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Página de Vendas</title>
+    <title>Método Águia Trader</title>
+
+    <!-- Open Graph Meta Tags para Meta Ads -->
+    <meta property="og:title" content="Método Águia Trader">
+    <meta property="og:description" content="Aprenda a lucrar todos os dias com o Método Águia Trader.">
+    <meta property="og:image" content="https://seudominio.com/imagem.jpg">
+    <meta property="og:url" content="https://seudominio.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Método Águia Trader">
+
     <style>
         /* Estilização Geral */
         body {
@@ -147,14 +156,12 @@
             let hasStarted = false;
             let hasButtonAppeared = localStorage.getItem('buttonVisible') === 'true';
 
-            // Mostrar botão se já assistido antes
             if (hasButtonAppeared) {
                 actionButton.style.display = 'block';
             }
 
             videoOverlay.addEventListener('click', () => {
                 if (!hasStarted) {
-                    // Primeira interação: reinicia com áudio
                     player.setCurrentTime(0).then(() => {
                         player.setVolume(1);
                         player.play();
@@ -162,7 +169,6 @@
                         hasStarted = true;
                     });
                 } else {
-                    // Interações subsequentes: alterna play/pause
                     player.getPaused().then(isPaused => {
                         if (isPaused) {
                             player.play();
@@ -173,7 +179,6 @@
                 }
             });
 
-            // Exibir botão após 3:17 minutos
             player.on('timeupdate', (data) => {
                 if (!hasButtonAppeared && Math.floor(data.seconds) >= 197) {
                     actionButton.style.display = 'block';
